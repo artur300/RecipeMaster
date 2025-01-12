@@ -2,18 +2,20 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.ap"
     compileSdk = 35
 
-    viewBinding{enable=true}
+    viewBinding {
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.example.ap"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -30,12 +32,13 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
@@ -48,13 +51,24 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // Room dependencies (updated to the latest version)
+    implementation("androidx.room:room-runtime:2.6.1") // Latest Room runtime
+    kapt("androidx.room:room-compiler:2.6.1") // Annotation processor for Room
+    implementation("androidx.room:room-ktx:2.6.1") // Room with coroutine support
+
+    // Glide for image loading
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
+
+    // Lifecycle and ViewModel components
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1") // Latest version of ViewModel
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") // Latest version of coroutines
+
+    // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation (libs.glide)
-    kapt (libs.glide.compiler)
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-
-
 }

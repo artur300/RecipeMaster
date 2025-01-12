@@ -120,7 +120,7 @@ class RecipeDetailsFragment : Fragment() {
 
         binding2.dialogYesButton.setOnClickListener {
             viewModel.deleteItem(item)
-            Toast.makeText(requireContext(), getString(R.string.item_updated), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),getString(R.string.item_deleted), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_recipeDetailsFragment2_to_allItemsFragment) // חזרה לרשימת הפריטים.
             dialog.dismiss()
         }

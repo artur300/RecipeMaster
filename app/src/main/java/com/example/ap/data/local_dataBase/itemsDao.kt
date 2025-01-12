@@ -16,13 +16,13 @@ import com.example.ap.data.model.Item
 interface itemsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addItem(item: Item)
+    suspend fun addItem(item: Item)
 
     @Delete
-    fun deleteItem(vararg item: Item)
+    suspend fun deleteItem(vararg item: Item)
 
     @Update
-    fun updateItem(item: Item)
+    suspend fun updateItem(item: Item)
 
     @Query("SELECT * FROM itemsRecipe ORDER BY Recipe_name")
     fun getItems(): LiveData<List<Item>>

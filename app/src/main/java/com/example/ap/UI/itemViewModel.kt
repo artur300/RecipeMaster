@@ -14,14 +14,12 @@ import kotlinx.coroutines.launch
 class itemViewModel(application: Application): AndroidViewModel(application) {
     private val repository = ItemRepository(application)
     val items: LiveData<List<Item>>? = repository.getItems()
+
     fun addItem(item: Item) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addItem(item)
-        }
+        viewModelScope.launch {repository.addItem(item)}
     }
 
-
     fun deleteItem(item: Item) {
-        repository.deleteItem(item)
+        viewModelScope.launch {repository.deleteItem(item)}
     }
 }

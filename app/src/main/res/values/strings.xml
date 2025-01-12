@@ -56,4 +56,5 @@
     <string name="yes">Yes</string>
     <string name="delete_receipt">Delete Receipt?</string>
     <string name="delete_receipt_title">Delete Receipt</string>
+    <string name="recipe_details">Recipe Details</string>
 </resources>
